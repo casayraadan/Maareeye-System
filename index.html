@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAAREEYE - Smart File & AI Tools</title>
+    <meta name="description" content="Smart file utilities, AI background removal and OCR scanners all in one platform.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <!-- Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="#" class="logo-container nav-link" data-page="home">
+                <img src="assets/logo.png" alt="MAAREEYE Logo" class="site-logo">
+                <span class="logo-text">MAAREEYE</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#" class="nav-link active" data-page="home" data-i18n="nav_home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="about" data-i18n="nav_about">About</a></li>
+                    <li><a href="#" class="nav-link" data-page="pricing" data-i18n="nav_pricing">Pricing</a></li>
+                    <li><a href="#" class="nav-link" data-page="login" data-i18n="nav_login">Login</a></li>
+                    <li><a href="#" class="nav-link signup-btn-nav" data-page="signup" data-i18n="nav_signup">Sign Up</a></li>
+                    <li>
+                        <div class="header-actions">
+                            <button id="theme-toggle" class="icon-btn theme-btn" aria-label="Toggle Theme">
+                                <svg class="sun-icon hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                            </button>
+                            <button id="lang-toggle" class="lang-btn">
+                                <span class="lang-text">EN</span>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="app-container">
+        <!-- HOME PAGE -->
+        <section id="home" class="page-section active">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="badge" data-i18n="hero_badge">Meet your new AI Toolkit</div>
+                    <h1 class="hero-title" data-i18n="hero_title">Smart File & <br><span class="gradient-text">AI Tools</span></h1>
+                    <p class="hero-subtitle" data-i18n="hero_subtitle">Convert files, remove backgrounds, and scan documents with the power of AI — all in one fast platform.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary btn-start-now" data-page="signup" data-i18n="btn_get_started">Get Started Free</button>
+                        <button class="btn btn-secondary" data-page="about" data-i18n="btn_learn_more">Learn More</button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <img src="assets/hero.png" alt="AI Toolkit Illustration" class="float-anim">
+                </div>
+            </div>
+
+            <div class="container features-grid">
+                <div class="feature-card clickable-card" data-page="dashboard" data-tool="converter">
+                    <div class="icon-box icon-blue">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+                    </div>
+                    <h3 data-i18n="feat_converter_title">File Converter</h3>
+                    <p data-i18n="feat_converter_desc">Instantly convert between formats with zero quality loss.</p>
+                </div>
+                
+                <div class="feature-card clickable-card" data-page="dashboard" data-tool="remover">
+                    <div class="icon-box icon-purple">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"></path><line x1="16" y1="5" x2="22" y2="5"></line><line x1="19" y1="2" x2="19" y2="8"></line><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg>
+                    </div>
+                    <h3 data-i18n="feat_remover_title">AI Background Remover</h3>
+                    <p data-i18n="feat_remover_desc">Extract subjects from photos with pixel-perfect precision.</p>
+                </div>
+
+                <div class="feature-card clickable-card" data-page="dashboard" data-tool="ocr">
+                    <div class="icon-box icon-orange">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </div>
+                    <h3 data-i18n="feat_ocr_title">OCR Scanner</h3>
+                    <p data-i18n="feat_ocr_desc">Extract editable text from images and scanned documents.</p>
+                </div>
+
+                <div class="feature-card clickable-card" data-page="dashboard" data-tool="activity">
+                    <div class="icon-box icon-green">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <h3 data-i18n="feat_secure_title">Fast & Secure</h3>
+                    <p data-i18n="feat_secure_desc">Your files are processed quickly and deleted immediately.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOGIN PAGE -->
+        <section id="login" class="page-section centered-page">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to access your AI tools</p>
+                </div>
+                <form id="login-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="login-email" data-i18n="label_email">Email Address</label>
+                        <input type="email" id="login-email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="label-row">
+                            <label for="login-pass" data-i18n="label_password">Password</label>
+                            <a href="#" class="forgot-link" data-i18n="label_forgot">Forgot password?</a>
+                        </div>
+                        <input type="password" id="login-pass" placeholder="••••••••" required>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="remember-me">
+                        <label for="remember-me" data-i18n="label_remember">Remember me for 30 days</label>
+                    </div>
+                    <button type="submit" id="btn-login" class="btn btn-primary btn-full">
+                        <span class="btn-text" data-i18n="nav_login">Sign In</span>
+                        <div class="btn-loader hidden"></div>
+                    </button>
+                </form>
+                <div class="auth-footer">
+                    Don't have an account? <a href="#" class="nav-link inline-link" data-page="signup">Create one</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIGNUP PAGE -->
+        <section id="signup" class="page-section centered-page accent-cyan">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h2>Create Account</h2>
+                    <p>Join MAAREEYE and power up your workflow</p>
+                </div>
+                <form id="signup-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="reg-name" data-i18n="label_fullname">Full Name</label>
+                        <input type="text" id="reg-name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-email" data-i18n="label_email">Email Address</label>
+                        <input type="email" id="reg-email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-pass" data-i18n="label_password">Password</label>
+                        <input type="password" id="reg-pass" placeholder="••••••••" required minlength="8">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-confirm" data-i18n="label_confirm">Confirm Password</label>
+                        <input type="password" id="reg-confirm" placeholder="••••••••" required>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="terms-agree" required>
+                        <label for="terms-agree" data-i18n="label_terms">I agree to the Terms of Service.</label>
+                    </div>
+                    <button type="submit" id="btn-signup" class="btn btn-cyan btn-full">
+                        <span class="btn-text" data-i18n="nav_signup">Create Account</span>
+                        <div class="btn-loader hidden"></div>
+                    </button>
+                </form>
+                <div class="auth-footer">
+                    Already have an account? <a href="#" class="nav-link inline-link" data-page="login" style="margin-left:2px;">Sign in</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT PAGE -->
+        <section id="about" class="page-section">
+            <div class="container about-hero">
+                <h1 class="centered-title">About MAAREEYE</h1>
+                <p class="centered-subtitle">Building the most capable, friendly, and fast AI toolkit for everyday professionals. No clutter — just tools that work.</p>
+            </div>
+
+            <div class="container mission-section">
+                <div class="mission-content">
+                    <h2 class="gradient-text-alt">Our Mission</h2>
+                    <p>MAAREEYE was born out of frustration with clunky, ad-filled file utilities online. We believe basic digital tasks — converting a document, extracting text, or removing a background — should be seamless and joyful.</p>
+                    <p>By leveraging modern AI models via lightning-fast edge networks, we give you enterprise-grade capabilities wrapped in an approachable design.</p>
+                </div>
+                <div class="mission-visual">
+                    <div class="glass-container">
+                         <img src="assets/about.png" alt="Abstract Visual" class="pulse-slow">
+                    </div>
+                </div>
+            </div>
+
+            <div class="container tool-spotlight">
+                <h3 class="section-title-center">The Tools</h3>
+                <div class="tools-grid">
+                    <div class="tool-item">
+                        <h4 class="c-blue">Smart Conversion</h4>
+                        <p>Upload any file and our engine automatically determines the best format choices, preserving quality while reducing size.</p>
+                    </div>
+                    <div class="tool-item">
+                        <h4 class="c-purple">Vision AI</h4>
+                        <p>Our background removal uses state-of-the-art semantic segmentation to cut out subjects perfectly, even with difficult edges.</p>
+                    </div>
+                    <div class="tool-item">
+                        <h4 class="c-green">Deep OCR</h4>
+                        <p>Scan documents in 50+ languages. We retain formatting, tables, and paragraphs so you can edit immediately.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container team-strip">
+                <div class="team-card">
+                    <div class="team-avatar">M</div>
+                    <div class="team-info">
+                        <h4>MAAREEYE Team</h4>
+                        <p>Engineering & Design — built with intent by a small team obsessed with craft and performance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICING PAGE -->
+        <section id="pricing" class="page-section">
+            <div class="container pricing-header" style="text-align: center; margin-bottom: 4rem;">
+                <h1 class="centered-title" data-i18n="pricing_title">Simple, Transparent Pricing</h1>
+                <p class="centered-subtitle" data-i18n="pricing_subtitle">Choose the plan that's right for your creative workflow.</p>
+            </div>
+
+            <div class="container pricing-grid">
+                <!-- Starter Plan -->
+                <div class="pricing-card">
+                    <div class="p-card-header">
+                        <h3 data-i18n="plan_starter_name">Starter</h3>
+                        <div class="price"><span>$</span>0<small>/mo</small></div>
+                        <p data-i18n="plan_starter_desc">Perfect for quick, casual edits.</p>
+                    </div>
+                    <ul class="p-features">
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="p_feat_1">5 AI tasks per day</span></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="p_feat_2">Standard processing speed</span></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="p_feat_3">Community support</span></li>
+                    </ul>
+                    <button class="btn btn-secondary btn-full" data-page="signup" data-i18n="btn_choose_starter">Choose Starter</button>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="pricing-card featured">
+                    <div class="p-badge">Most Popular</div>
+                    <div class="p-card-header">
+                        <h3 data-i18n="plan_pro_name">Pro Plan</h3>
+                        <div class="price"><span>$</span>12<small>/mo</small></div>
+                        <p data-i18n="plan_pro_desc">Unlimited power for professionals.</p>
+                    </div>
+                    <ul class="p-features">
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="p_feat_4">Unlimited AI tasks</span></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="p_feat_5">Priority AI processing</span></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="p_feat_6">Bulk file conversion</span></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> <span data-i18n="p_feat_7">Premium 24/7 support</span></li>
+                    </ul>
+                    <button class="btn btn-primary btn-full" data-page="signup" data-i18n="btn_choose_pro">Get Pro Access</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- USER DASHBOARD -->
+        <section id="dashboard" class="page-section">
+            <div class="container-full dashboard-header">
+                <h2 class="dashboard-title">Welcome Back, <span class="gradient-text">User</span></h2>
+                <p class="dashboard-sub">Select an AI tool below to get started with your workflow.</p>
+            </div>
+
+            <div class="container-full dashboard-main">
+                <!-- Tool Selector Side -->
+                <div class="tools-sidebar">
+                    <button class="tool-nav-btn active" data-target="converter">
+                        <div class="mini-icon icon-blue"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg></div>
+                        File Converter
+                    </button>
+                    <button class="tool-nav-btn" data-target="remover">
+                        <div class="mini-icon icon-purple"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"></path><line x1="16" y1="5" x2="22" y2="5"></line><line x1="19" y1="2" x2="19" y2="8"></line><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg></div>
+                        BG Remover
+                    </button>
+                    <button class="tool-nav-btn" data-target="enhancer">
+                        <div class="mini-icon icon-pink"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+                        AI Enhancer
+                    </button>
+                    <button class="tool-nav-btn" data-target="ocr">
+                        <div class="mini-icon icon-orange"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></div>
+                        OCR Scanner
+                    </button>
+                    <button class="tool-nav-btn" data-target="scanner">
+                        <div class="mini-icon icon-cyan"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11V7a5 5 0 0 1 10 0v4"></path><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><circle cx="12" cy="16" r="1"></circle></svg></div>
+                        Smart Scanner
+                    </button>
+                    <button class="tool-nav-btn" data-target="writer">
+                        <div class="mini-icon icon-green"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></div>
+                        AI Writer
+                    </button>
+                    <button class="tool-nav-btn" data-target="art">
+                        <div class="mini-icon icon-pink"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"></path></svg></div>
+                        AI Art Gen
+                    </button>
+                    <button class="tool-nav-btn" data-target="business">
+                        <div class="mini-icon icon-gold"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+                        Business Hub
+                    </button>
+                    <button class="tool-nav-btn" data-target="qr">
+                        <div class="mini-icon icon-blue"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><rect x="7" y="7" width="3" height="3"></rect><rect x="14" y="7" width="3" height="3"></rect><rect x="7" y="14" width="3" height="3"></rect><rect x="14" y="14" width="3" height="3"></rect></svg></div>
+                        QR Generator
+                    </button>
+                    <button class="tool-nav-btn" data-target="compressor">
+                        <div class="mini-icon icon-purple"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14V4h10l6 6v10H4"></path><path d="m11 11-4 4-4-4"></path><path d="M11 19l-4-4-4 4"></path></svg></div>
+                        Compressor
+                    </button>
+                    <button class="tool-nav-btn" data-target="summarizer">
+                        <div class="mini-icon icon-orange"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></div>
+                        Summarizer
+                    </button>
+                    <div class="sidebar-divider"></div>
+                    <button class="tool-nav-btn" data-target="activity">
+                        <div class="mini-icon icon-green"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
+                        Recent Activity
+                    </button>
+                </div>
+
+                <!-- Workspace Area -->
+                <div class="workspace-card">
+                    <!-- CONVERTER VIEW -->
+                    <div id="converter-view" class="workspace-content active">
+                        <div class="ws-header">
+                            <h3>Smart File Converter</h3>
+                            <p>Select files to convert instantly between supported formats.</p>
+                        </div>
+                        <div class="upload-zone" id="conv-upload">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                            <p class="drop-text">Drag & Drop your file here</p>
+                            <span class="small-text">Support: JPEG, PNG, PDF, DOCX</span>
+                            <input type="file" class="hidden-input" id="file-input-conv">
+                            <button class="btn btn-secondary btn-sm mt-2" onclick="document.getElementById('file-input-conv').click()">Browse Files</button>
+                        </div>
+                        <div id="conv-controls" class="tool-action-row hidden">
+                            <span id="conv-filename" class="file-pill">filename.jpg</span>
+                            <div class="flex-group">
+                                <span class="label-inline" data-i18n="label_to">To:</span>
+                                <select id="conv-format" class="dark-select">
+                                    <option value="image/png">PNG</option>
+                                    <option value="image/jpeg">JPEG</option>
+                                    <option value="image/webp">WEBP</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary" id="btn-process-conv">
+                                <span class="btn-text" data-i18n="btn_convert">Convert Now</span>
+                                <div class="btn-loader hidden"></div>
+                            </button>
+                        </div>
+
+                        <div id="conv-result-container" class="ocr-result-area hidden">
+                            <div class="ocr-header-row">
+                                <span class="badge badge-success" data-i18n="conv_success_badge">Conversion Complete</span>
+                                <button class="btn btn-primary btn-sm" id="btn-download-conv">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                    <span data-i18n="btn_download_file">Download File</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- REMOVER VIEW -->
+                    <div id="remover-view" class="workspace-content">
+                        <div class="ws-header">
+                            <h3 data-i18n="feat_remover_title">AI Background Remover</h3>
+                            <p data-i18n="feat_remover_desc">Isolate your main subject effortlessly with pixel-perfect precision.</p>
+                        </div>
+                        <div class="upload-zone" id="rmv-upload">
+                             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"></path><line x1="16" y1="5" x2="22" y2="5"></line><line x1="19" y1="2" x2="19" y2="8"></line><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg>
+                            <p class="drop-text" data-i18n="rmv_upload_text">Select an Image to Proceed</p>
+                            <input type="file" accept="image/*" class="hidden-input" id="file-input-rmv">
+                            <button class="btn btn-secondary btn-sm mt-2" onclick="document.getElementById('file-input-rmv').click()" data-i18n="btn_upload_image">Upload Image</button>
+                        </div>
+                        <div id="rmv-preview" class="preview-container hidden">
+                            <div class="preview-box">
+                                <span class="preview-label">Original</span>
+                                <img id="rmv-img-before" src="" alt="Before">
+                            </div>
+                            <div class="preview-arrow">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </div>
+                            <div class="preview-box">
+                                <span class="preview-label">AI Result</span>
+                                <div class="transparency-grid">
+                                    <img id="rmv-img-after" src="" alt="After" class="hidden">
+                                    <div id="rmv-skeleton" class="skeleton-loader"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="rmv-controls" class="tool-action-row hidden">
+                            <span id="rmv-filename" class="file-pill">image.png</span>
+                            <button class="btn btn-cyan" id="btn-process-rmv" data-i18n="btn_remove_bg">
+                                <span class="btn-text">Remove BG</span>
+                                <div class="btn-loader hidden"></div>
+                            </button>
+                        </div>
+                        <!-- NEW: Inline Action Row for Processed Image -->
+                        <div id="rmv-result-controls" class="tool-action-row hidden" style="margin-top: 20px; justify-content: center; gap: 15px; animation: fadeInUp 0.3s ease;">
+                            <button class="btn btn-cyan" id="btn-download-rmv">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                Download Image
+                            </button>
+                            <!-- Direct Enhance Pipeline Shortcut -->
+                            <button class="btn btn-primary" id="btn-enhance-from-rmv" style="background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink)); border: none;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                AI Enhance Image
+                            </button>
+                            <button class="btn btn-secondary" id="btn-reset-rmv">Start New</button>
+                        </div>
+                    </div>
+
+                    <!-- AI IMAGE ENHANCER VIEW -->
+                    <div id="enhancer-view" class="workspace-content">
+                        <div class="ws-header">
+                            <h3 data-i18n="feat_enhancer_title">AI Image Enhancer</h3>
+                            <p data-i18n="feat_enhancer_desc">Transform low-resolution images into crystal-clear, high-definition quality instantly.</p>
+                        </div>
+                        <div class="upload-zone" id="enh-upload">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7"></path></svg>
+                            <p class="drop-text" data-i18n="enh_upload_text">Select an Image to Enhance</p>
+                            <input type="file" accept="image/*" class="hidden-input" id="file-input-enh">
+                            <button class="btn btn-secondary btn-sm mt-2" onclick="document.getElementById('file-input-enh').click()" data-i18n="btn_upload_image">Upload Image</button>
+                        </div>
+                        
+                        <div id="enh-preview" class="preview-container hidden">
+                            <div class="preview-box">
+                                <span class="preview-label">Original (Low Res)</span>
+                                <img id="enh-img-before" src="" alt="Original">
+                            </div>
+                            <div class="preview-arrow">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </div>
+                            <div class="preview-box">
+                                <span class="preview-label">AI Enhanced (12K Ultra HD)</span>
+                                <div class="transparency-grid">
+                                    <img id="enh-img-after" src="" alt="Enhanced" class="hidden">
+                                    <div id="enh-skeleton" class="skeleton-loader"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="enh-controls" class="tool-action-row hidden">
+                            <span id="enh-filename" class="file-pill">image.jpg</span>
+                            <button class="btn btn-cyan" id="btn-process-enh">
+                                <span class="btn-text">Enhance Quality (12K Ultra HD)</span>
+                                <div class="btn-loader hidden"></div>
+                            </button>
+                        </div>
+                        
+                        <!-- Inline Action Row for Enhancer Results -->
+                        <div id="enh-result-controls" class="tool-action-row hidden" style="margin-top: 20px; justify-content: center; gap: 15px; animation: fadeInUp 0.3s ease;">
+                            <button class="btn btn-cyan" id="btn-download-enh">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                Download 12K Image
+                            </button>
+                            <button class="btn btn-secondary" id="btn-reset-enh">Start New</button>
+                        </div>
+                    </div>
+
+                    <!-- SMART SCANNER VIEW -->
+                    <div id="scanner-view" class="workspace-content">
+                        <div class="ws-header">
+                            <h3 data-i18n="feat_scanner_title">Smart Doc Scanner</h3>
+                            <p data-i18n="feat_scanner_desc">Turn mobile photos into professional, straightened, high-contrast document scans.</p>
+                        </div>
+                        <div class="upload-zone" id="scanner-upload">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            <p class="drop-text" data-i18n="scanner_upload_text">Upload Document Photo</p>
+                            <input type="file" class="hidden-input" id="file-input-scanner" accept="image/*">
+                            <button class="btn btn-secondary btn-sm mt-2" onclick="document.getElementById('file-input-scanner').click()" data-i18n="btn_upload_doc">Choose Photo</button>
+                        </div>
+
+                        <div id="scanner-controls" class="tool-action-row hidden">
+                            <span id="scanner-filename" class="file-pill">document.jpg</span>
+                            <button class="btn btn-cyan" id="btn-process-scanner">
+                                <span class="btn-text" data-i18n="btn_enhance_scan">Enhance & Straighten</span>
+                                <div class="btn-loader hidden"></div>
+                            </button>
+                        </div>
+
+                        <div id="scanner-result-container" class="ocr-result-area hidden">
+                            <div class="ocr-header-row">
+                                <span class="badge badge-success" data-i18n="scanner_success_badge">Scan Enhanced</span>
+                                <button class="btn btn-primary btn-sm" id="btn-download-scanner">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                    <span data-i18n="btn_download_file">Download Scan</span>
+                                </button>
+                            </div>
+                            <div class="art-display-box" style="background: #f1f5f9; padding: 2rem; position: relative;">
+                                <div id="scanner-status" class="scan-status-overlay hidden">Detecting edges...</div>
+                                <canvas id="scanner-canvas" style="max-width: 100%; height: auto; box-shadow: 0 10px 25px rgba(0,0,0,0.1);"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OCR VIEW -->
+                    <div id="ocr-view" class="workspace-content">
+                        <div class="ws-header">
+                            <h3 data-i18n="feat_ocr_title">OCR Scanner</h3>
+                            <p data-i18n="feat_ocr_desc">Extract editable text from images and scanned documents with high accuracy.</p>
+                        </div>
+                        <div class="upload-zone" id="ocr-upload">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="7" y1="8" x2="17" y2="8"></line><line x1="7" y1="12" x2="17" y2="12"></line><line x1="7" y1="16" x2="13" y2="16"></line></svg>
+                            <p class="drop-text" data-i18n="ocr_upload_text">Import Scanned Document</p>
+                            <input type="file" class="hidden-input" id="file-input-ocr">
+                            <button class="btn btn-secondary btn-sm mt-2" onclick="document.getElementById('file-input-ocr').click()" data-i18n="btn_upload_doc">Choose File</button>
+                        </div>
+                        
+                        <div id="ocr-result-container" class="ocr-result-area hidden">
+                            <div class="ocr-header-row">
+                                <span class="badge badge-success" data-i18n="ocr_success_badge">Text Extracted</span>
+                                <button class="btn-icon" id="btn-copy-ocr" title="Copy Text">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                </button>
+                            </div>
+                            <textarea id="ocr-text-output" readonly placeholder="Processing text..."></textarea>
+                        </div>
+
+                         <div id="ocr-controls" class="tool-action-row hidden">
+                            <span id="ocr-filename" class="file-pill">scan.jpg</span>
+                            <button class="btn btn-orange" id="btn-process-ocr">
+                                <span class="btn-text" data-i18n="btn_scan_text">Extract Text</span>
+                                <div class="btn-loader hidden"></div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- SUMMARIZER VIEW -->
+                    <div id="summarizer-view" class="workspace-content">
+                        <div class="ws-header">
+                            <h3 data-i18n="feat_sum_title">AI Web Summarizer</h3>
+                            <p data-i18n="feat_sum_desc">Paste any website link and get a concise AI-generated summary in seconds.</p>
+                        </div>
+                        <div class="writer-input-zone">
+                            <div class="form-group">
+                                <label data-i18n="label_url">Website URL</label>
+                                <input type="url" id="sum-url" class="dark-input" placeholder="https://example.com/article">
+                            </div>
+                            <button class="btn btn-orange mt-2" id="btn-process-sum">
+                                <span class="btn-text" data-i18n="btn_summarize">Summarize Now</span>
+                                <div class="btn-loader hidden"></div>
+                            </button>
+                        </div>
+                        
+                        <div id="sum-result-container" class="ocr-result-area hidden">
+                            <div class="ocr-header-row">
+                                <span class="badge badge-success" data-i18n="sum_success_badge">Summary Ready</span>
+                                <button class="btn-icon" id="btn-copy-sum" title="Copy Summary">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                </button>
+                            </div>
+                            <div id="sum-text-output" class="article-output-rich"></div>
+                        </div>
+                    </div>
+
+                    <!-- COMPRESSOR VIEW -->
+                    <div id="compressor-view" class="workspace-content">
+                        <div class="ws-header">
+                            <h3 data-i18n="feat_compress_title">Image Compressor</h3>
+                            <p data-i18n="feat_compress_desc">Reduce image file size by up to 80% without losing visible quality.</p>
+                        </div>
+                        <div class="upload-zone" id="comp-upload">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            <p class="drop-text" data-i18n="comp_upload_text">Upload Image to Compress</p>
+                            <input type="file" class="hidden-input" id="file-input-comp" accept="image/*">
+                            <button class="btn btn-secondary btn-sm mt-2" onclick="document.getElementById('file-input-comp').click()" data-i18n="btn_upload_image">Choose Image</button>
+                        </div>
+
+                        <div id="comp-controls" class="tool-action-row hidden">
+                            <span id="comp-filename" class="file-pill">image.jpg</span>
+                            <button class="btn btn-purple" id="btn-process-comp">
+                                <span class="btn-text" data-i18n="btn_compress">Optimize Now</span>
+                                <div class="btn-loader hidden"></div>
+                            </button>
+                        </div>
+
+                        <div id="comp-result-container" class="ocr-result-area hidden">
+                            <div class="ocr-header-row">
+                                <span class="badge badge-success" data-i18n="comp_success_badge">Optimization Complete</span>
+                                <button class="btn btn-primary btn-sm" id="btn-download-comp">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                    <span data-i18n="btn_download_file">Download Optimized</span>
+                                </button>
+                            </div>
+                            <div class="comp-stats-row">
+                                <div class="stat-item">
+                                    <span class="stat-label">Original:</span>
+                                    <span id="comp-original-size" class="stat-value">0 KB</span>
+                                </div>
+                                <div class="stat-arrow">→</div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Optimized:</span>
+                                    <span id="comp-new-size" class="stat-value">0 KB</span>
+                                </div>
+                                <div class="stat-badge" id="comp-savings">-50%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QR GEN VIEW -->
+                    <div id="qr-view" class="workspace-content">
+                        <div class="ws-header">
+                            <h3 data-i18n="feat_qr_title">QR Code Generator</h3>
+                            <p data-i18n="feat_qr_desc">Create custom QR codes for your links and documents instantly.</p>
+                        </div>
+                        <div class="writer-input-zone">
+                            <div class="form-group">
+                                <label data-i18n="label_qr_text">Enter URL or Text</label>
+                                <input type="text" id="qr-text" class="dark-input" placeholder="https://maareeye.com">
+                            </div>
+                            <button class="btn btn-primary mt-2" id="btn-process-qr">
+                                <span class="btn-text" data-i18n="btn_generate_qr">Generate QR</span>
+                                <div class="btn-loader hidden"></div>
+                            </button>
+                        </div>
+                        
+                        <div id="qr-result-container" class="ocr-result-area hidden">
+                            <div class="ocr-header-row">
+                                <span class="badge badge-success" data-i18n="qr_success_badge">QR Code Ready</span>
+                                <button class="btn btn-secondary btn-sm" id="btn-download-qr">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                    <span data-i18n="btn_download_file">Download</span>
+                                </button>
+                            </div>
+                            <div class="art-display-box" style="padding: 2rem; background: white; border-radius: 8px;">
+                                <div id="qr-output"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ART GEN VIEW -->
+                    <div id="art-view" class="workspace-content writer-chat-layout">
+                        <div class="ws-header" style="margin-bottom: 1rem;">
+                            <h3 data-i18n="feat_art_title">AI Art Generator</h3>
+                            <p data-i18n="feat_art_desc">Turn your imagination into stunning visuals using advanced AI models.</p>
+                        </div>
+
+                        <!-- Chat messages / Output container -->
+                        <div class="writer-chat-box" id="art-chat-box" style="display: flex; flex-direction: column;">
+                            <!-- Initial AI greeting -->
+                            <div class="chat-bubble ai-bubble" id="art-greeting-bubble">
+                                <div class="chat-avatar" style="background: rgba(236, 72, 153, 0.15);">
+                                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--accent-pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                                </div>
+                                <div class="chat-content-wrapper">
+                                    <span class="sender-name" style="color: var(--accent-pink);">MAAREEYE AI ARTIST</span>
+                                    <div class="chat-message-text">
+                                        <p>Waan ku salaamay! Waa qaybtii nashqadaynta sawirada. Fadlan hoos iigu qor nooca sawir ee aad rabto inaan kuu sawiro (tusaale: Muqdisho oo aad u casri ah oo gawaari duulaysa leh...).</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="art-result-container" class="ocr-result-area hidden" style="margin-top: auto; animation: fadeInUp 0.4s ease;">
+                                <div class="ocr-header-row">
+                                    <span class="badge badge-success" data-i18n="art_success_badge" style="background: rgba(236, 72, 153, 0.15); color: var(--accent-pink); border-color: rgba(236, 72, 153, 0.3);">Artwork Ready</span>
+                                    <div style="display: flex; gap: 8px;">
+                                        <button class="btn btn-secondary btn-sm" id="btn-enhance-from-art">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                            <span>AI Enhance Image</span>
+                                        </button>
+                                        <button class="btn btn-pink btn-sm" id="btn-download-art">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                            <span data-i18n="btn_download_file">Download</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="art-display-box" style="margin-bottom: 0;">
+                                    <img id="art-output-img" src="" alt="Generated Artwork">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chat input area at the bottom with options -->
+                        <div class="writer-chat-input-area" style="padding-top: 15px;">
+                            <div class="tools-grid-mini" style="margin-bottom: 15px; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <select id="art-model" class="dark-input" style="height: 40px; border-radius: 8px; font-size: 0.9rem;">
+                                        <option value="flux">Flux Pro (Model A) - Recommended</option>
+                                        <option value="gemini">Gemini Vision (Model B)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <select id="art-style" class="dark-input" style="height: 40px; border-radius: 8px; font-size: 0.9rem;">
+                                        <option value="realistic">Ultra Realistic</option>
+                                        <option value="cinematic">Cinematic Movie</option>
+                                        <option value="3d">3D Render (Unreal 5)</option>
+                                        <option value="anime">Anime Style</option>
+                                        <option value="digital">Digital Art</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="writer-input-inner">
+                                <textarea id="art-prompt" class="writer-chat-textarea" placeholder="Describe the image you want to create..." rows="1"></textarea>
+                                <button class="writer-chat-send-btn" id="btn-process-art" style="background: var(--accent-pink);">
+                                    <svg class="send-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                                    <div class="btn-loader hidden"></div>
+                                </button>
+                            </div>
+                            <div class="writer-chat-info">Press Enter to generate art • Shift+Enter for new line</div>
+                        </div>
+                    </div>
+
+                    <!-- WRITER VIEW -->
+                    <div id="writer-view" class="workspace-content writer-chat-layout">
+                        <div class="ws-header" style="margin-bottom: 1rem;">
+                            <h3 data-i18n="feat_writer_title">AI Article Writer</h3>
+                            <p data-i18n="feat_writer_desc">Generate professional, research-based articles on any topic using Google AI.</p>
+                        </div>
+                        
+                        <!-- Chat messages container -->
+                        <div class="writer-chat-box" id="writer-chat-box">
+                            <!-- Initial AI greeting -->
+                            <div class="chat-bubble ai-bubble">
+                                <div class="chat-avatar">
+                                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--accent-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                                </div>
+                                <div class="chat-content-wrapper">
+                                    <span class="sender-name">MAAREEYE AI</span>
+                                    <div class="chat-message-text">
+                                        <p>Maareeye AI Writer waa kuu diyaar! Fadlan hoos ku qor mawduuca ama faahfaahinta maqaalka aad doonayso inaan kuu diyaariyo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chat input area at the bottom -->
+                        <div class="writer-chat-input-area">
+                            <div class="writer-input-inner">
+                                <textarea id="article-topic" class="writer-chat-textarea" placeholder="Qor mawduuca aad rabto (tusaale: The future of tech...)" rows="1"></textarea>
+                                <button class="writer-chat-send-btn" id="btn-process-writer">
+                                    <svg class="send-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                                    <div class="btn-loader hidden"></div>
+                                </button>
+                            </div>
+                            <div class="writer-chat-info">Press Enter to generate • Shift+Enter for new line</div>
+                        </div>
+                    </div>
+
+                    <!-- BUSINESS HUB VIEW -->
+                    <div id="business-view" class="workspace-content">
+                        <div class="ws-header">
+                            <h3>AI Business Hub</h3>
+                            <p>Automate your Somali business workflows with smart AI agents and n8n integration.</p>
+                        </div>
+                        
+                        <div class="business-grid">
+                            <!-- Receipt Scanner Card -->
+                            <div class="business-card" id="card-receipt-scanner">
+                                <div class="b-card-icon icon-cyan">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1-2-1Z"></path><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path><path d="M12 17.5V6.5"></path></svg>
+                                </div>
+                                <h4>Smart Receipt Scanner</h4>
+                                <p>Scan handwritten receipts and invoices. AI extracts data and saves to your records.</p>
+                                <button class="btn btn-outline-cyan btn-sm">Launch Scanner</button>
+                            </div>
+
+                            <!-- n8n Automation Card -->
+                            <div class="business-card" id="card-n8n-automation">
+                                <div class="b-card-icon icon-purple">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8"></path><path d="m4.93 4.93 5.66 5.66"></path><path d="M2 12h8"></path><path d="m4.93 19.07 5.66-5.66"></path><path d="M12 22v-8"></path><path d="m19.07 19.07-5.66-5.66"></path><path d="M22 12h-8"></path><path d="m19.07 4.93-5.66 5.66"></path></svg>
+                                </div>
+                                <h4>n8n Automation</h4>
+                                <p>Connect Maareeye to your n8n workflows. Automate emails, Drive uploads, and more.</p>
+                                <button class="btn btn-outline-purple btn-sm" id="btn-configure-n8n">Configure Webhook</button>
+                            </div>
+                        </div>
+
+                        <!-- n8n Config Panel (Hidden by default) -->
+                        <div id="n8n-config-panel" class="glass-panel mt-4 hidden">
+                            <h4>n8n Webhook Configuration</h4>
+                            <div class="form-group mt-3">
+                                <label>Webhook URL</label>
+                                <input type="text" id="n8n-webhook-url" placeholder="https://your-n8n-instance.com/webhook/..." class="modern-input">
+                            </div>
+                            <div class="btn-group mt-3">
+                                <button class="btn btn-cyan btn-sm" id="btn-save-n8n">Save Webhook</button>
+                                <button class="btn btn-secondary btn-sm" id="btn-test-n8n">Test Connection</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ACTIVITY VIEW -->
+                    <div id="activity-view" class="workspace-content">
+                        <div class="ws-header">
+                            <h3>Recent Activity</h3>
+                            <p>Track your recently processed files and downloads.</p>
+                        </div>
+                        <div class="history-table-container">
+                            <table class="history-table">
+                                <thead>
+                                    <tr>
+                                        <th>File Name</th>
+                                        <th>Tool</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>report_2024.pdf</td>
+                                        <td>Converter</td>
+                                        <td>2 mins ago</td>
+                                        <td><span class="status-badge success">Completed</span></td>
+                                        <td><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>profile_pic.png</td>
+                                        <td>BG Remover</td>
+                                        <td>1 hour ago</td>
+                                        <td><span class="status-badge success">Completed</span></td>
+                                        <td><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>invoice_scan.jpg</td>
+                                        <td>OCR</td>
+                                        <td>Yesterday</td>
+                                        <td><span class="status-badge success">Completed</span></td>
+                                        <td><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- PROCESSING STATE (Universal) -->
+                    <div id="processing-view" class="ws-overlay hidden">
+                        <div class="loader-circle"></div>
+                        <p>AI Processing...</p>
+                    </div>
+
+                     <!-- RESULT STATE (Universal) -->
+                    <div id="result-view" class="ws-overlay hidden">
+                        <div class="success-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                        <h3>Task Complete!</h3>
+                        <p class="mb-3">Your output is ready for utilization.</p>
+                        <button class="btn btn-cyan" id="btn-download">Download Result</button>
+                        <a href="#" class="text-link mt-2" id="btn-reset-ws">Start New Task</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-left">
+                <p>&copy; 2024 MAAREEYE. All rights reserved.</p>
+            </div>
+            <div class="footer-right">
+                <a href="#">Twitter</a>
+                <a href="#">GitHub</a>
+                <a href="#">Discord</a>
+                <div class="footer-sub-links" style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 1.5rem;">
+                    <a href="#">Terms</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://docs.opencv.org/4.5.5/opencv.js" async type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script type="module">
+        import removeBackground from 'https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.4.5/+esm'
+        window.imglyRemoveBackground = removeBackground;
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
